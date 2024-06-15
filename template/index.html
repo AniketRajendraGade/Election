@@ -1,0 +1,95 @@
+<!-- templates/data_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            width: calc(100% - 16px); /* Adjust width for padding and border */
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 12px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload</h1>
+        <form method="post" enctype="multipart/form-data" multiple required>
+            {% csrf_token %}
+            <label for="id_name">Your Name:</label>
+            <input type="text" name="Name" id="id_name">
+
+            <label for="id_state">State:</label>
+            <input type="text" name="state" id="id_state" required>
+
+            <label for="id_district">District:</label>
+            <input type="text" name="District" id="id_district" required>
+
+            <label for="id_assembly_constituency">Assembly Constituency:</label>
+            <input type="text" name="Assembly_Constituency" id="id_assembly_constituency" required>
+
+            <label for="id_file">File:</label>
+            <input type="file" name="file" id="id_file" required multiple required>
+
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
